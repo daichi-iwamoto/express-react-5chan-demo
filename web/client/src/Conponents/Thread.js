@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Style/Thread.css';
 
 function Thread() {
   const [error, setError] = useState(null);
@@ -26,6 +27,7 @@ function Thread() {
         (result) => {
           setIsLoaded(true);
           setComments(result);
+          console.log(result)
         },
         (error) => {
           setIsLoaded(true);
@@ -40,16 +42,23 @@ function Thread() {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
+      <section id="thread">
         <h1>{thread}</h1>
-        <ul>
+        <div className="comments">
           {comments.map(comment => (
-            <li key={comment.id}>
-              {comment.comment}
-            </li>
+            <div className="comment" key={comment.id}>
+              <div className="comment-head">
+                <p className="id">{comment.id}</p>
+                <p className="name">null スタックエンジニアの民</p>
+                <p className="date">{comment.post_date}</p>
+              </div>
+              <div className="contents">
+                {comment.comment}
+              </div>
+            </div>
           ))}
-        </ul>
-      </div>
+        </div>
+      </section>
     );
   }
 }

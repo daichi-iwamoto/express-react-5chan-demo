@@ -63,7 +63,7 @@ insert into CommentList (
     thread_id, comment, post_date, edited)
     values (
         1, 
-        'test comment heyheyhey!', 
+        'test null', 
         '2021-08-01 00:00:01.000001',
         false
     );
@@ -87,4 +87,4 @@ docker-compose exec mysql mysql -uroot -p
 Express × MySQL環境構築：https://note.com/kawa1228/n/nb18e19fbf4cc  
 DB接続：https://zenn.dev/ryota_koba04/scraps/1556360172954c
 Express API作成：https://qiita.com/tamura_CD/items/e3abdab9b8c5aa35fa6b
-React × Express連携：https://www.to-r.net/media/docer-cra/  
+React × Express連携：https://masalib.hatenablog.com/entry/2018/04/30/021913

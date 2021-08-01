@@ -1,0 +1,28 @@
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+header .logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+header fieldset input {
+  border: 1px solid #ccc;
+  color: #555;
+  height: 24px;
+  font-weight: lighter;
+}
+
+header fieldset label {
+  border: solid 1px #3e465a;
+  background-color: #485269;
+  color: #fff;
+  height: 24px;
+  padding: 5px;
+}

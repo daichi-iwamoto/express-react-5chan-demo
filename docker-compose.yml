@@ -1,7 +1,8 @@
 version: '3'
 services:
  mysql:
-   image: mysql:5.7
+   build:
+    context: ./mysql
    env_file: ./mysql/mysql.env
    environment:
      - TZ=Asia/Tokyo
@@ -10,25 +11,9 @@ services:
    volumes:
      - ./mysql/conf:/etc/mysql/conf.d/:ro
      - mysqldata:/var/lib/mysql
+   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
    networks:
      - default
- api:
-   image: node:12
-   env_file: ./api.env
-   environment:
-     - TZ=Asia/Tokyo
-     - DEBUG=app:*
-   tty: true
-   ports:
-     - '3000:3000'
-   volumes:
-     - ./api:/app
-   working_dir: /app
-   command: npm run watch
-   networks:
-     - default
-   depends_on:
-     - mysql
  web:
    image: node:12
    environment:
@@ -36,13 +21,16 @@ services:
      - DEBUG=app:*
    tty: true
    ports:
-     - '3001:3000'
+     - '3000:3000'
+     - '3001:3001'
    volumes:
      - ./web:/app
    working_dir: /app
-   command: npm run start
+  #  command: npm run dev
    networks:
      - default
+   depends_on:
+     - mysql
 networks:
  default:
 

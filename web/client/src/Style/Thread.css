@@ -1,0 +1,51 @@
+#thread {
+  padding: 15px;
+}
+
+#thread h1 {
+  color: #485269;
+  margin: 20px 0 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#thread .comments {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  border-top: 1px dotted #cdcdcd;
+  padding: 30px 0 0;
+}
+
+#thread .comment {
+  border-width: 1px;
+  display: block;
+  width: 100%;
+  border-style: none solid solid none;
+  border-color: #ddd;
+  background-color: #efefef;
+  margin-bottom: 8px;
+  padding: 8px;
+  background: #efefef;
+}
+
+#thread .comment .comment-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#thread .comment .comment-head .id {
+  margin-right: 5px;
+}
+
+#thread .comment .comment-head .name {
+  color: green;
+  font-size: 16px;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+#thread .comment .contents {
+  padding: 10px 0;
+}
