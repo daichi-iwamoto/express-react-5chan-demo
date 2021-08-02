@@ -1,0 +1,95 @@
+.add-comment .add-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: solid 1px #3e465a;
+  background-color: #485269;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 20px;
+  transition: .3s;
+}
+
+.add-comment .add-button:hover {
+  border: solid 1px #a4aabb;
+  background-color: #7c8497;
+}
+
+.edit-comment .edit-field-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.edit-comment .edit-field {
+  position: absolute;
+  width: 60%;
+  top: 20%;
+  left: 20%;
+}
+
+.edit-comment .edit-field .edit-field-head {
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.edit-comment .edit-field .edit-field-head .close-button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  right: 20px;
+  border: solid 1px #3e465a;
+  border-radius: 15px;
+  transition: .3s;
+}
+
+.edit-comment .edit-field .edit-field-head .close-button:hover {
+  border: solid 1px #a4aabb;
+  background-color: #485269;
+  color: #fff;
+}
+
+.edit-comment .edit-field .edit-field-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #f2f3f7;
+  border-top: 1px dotted #cdcdcd;
+}
+
+.edit-comment .edit-field .edit-field-contents textarea {
+  width: 80%;
+  height: 300px;
+  padding: 10px;
+  margin: 30px auto 15px;
+  border: solid 1px #ccc;
+  background: #fff;
+  font-size: 12px;
+}
+
+.edit-comment .edit-field .edit-field-contents .submit {
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  margin: 15px auto 30px;
+  border: solid 1px #a4aabb;
+  background-color: #485269;
+  color: #fff;
+  transition: .3s;
+}
+
+.edit-comment .edit-field .edit-field-contents .submit:hover {
+  border: solid 1px #a4aabb;
+  background-color: #7c8497;
+}

@@ -1,5 +1,6 @@
 #thread {
   padding: 15px;
+  margin: 50px 0 0;
 }
 
 #thread h1 {
@@ -30,6 +31,7 @@
 }
 
 #thread .comment .comment-head {
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -44,6 +46,27 @@
   font-size: 16px;
   margin-right: 5px;
   font-weight: bold;
+}
+
+#thread .comment .comment-head .edit {
+  margin: 0 0 0 15px;
+  color: #485269;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+#thread .comment .comment-head .del {
+  margin: 0 0 0 15px;
+  color: #ff1a1a;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#thread .comment .comment-head .edited {
+  position: absolute;
+  right: 10px;
+  color: #8e8e8e;
 }
 
 #thread .comment .contents {

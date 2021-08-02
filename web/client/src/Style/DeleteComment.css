@@ -1,0 +1,57 @@
+.delete-comment .delete-field-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.delete-comment .delete-field {
+  position: absolute;
+  width: 60%;
+  top: 20%;
+  left: 20%;
+}
+
+.delete-comment .delete-field .delete-field-head {
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.delete-comment .delete-field .delete-field-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #f2f3f7;
+  border-top: 1px dotted #cdcdcd;
+}
+
+.delete-comment .delete-field .delete-field-contents button.yes {
+  background: #ff1a1a;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 30px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #b1b1b1, -3px -3px 5px #fff;
+  transition: .3s;
+}
+
+.delete-comment .delete-field .delete-field-contents button.no {
+  background: #485269;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 30px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #b1b1b1, -3px -3px 5px #fff;
+  transition: .3s;
+}
+
+.delete-comment .delete-field .delete-field-contents button.yes:hover,
+.delete-comment .delete-field .delete-field-contents button.no:hover {
+  opacity: .6;
+}
