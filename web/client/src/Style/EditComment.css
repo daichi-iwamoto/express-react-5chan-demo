@@ -1,5 +1,5 @@
 .add-comment .add-button {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   border: solid 1px #3e465a;
@@ -9,6 +9,7 @@
   border-radius: 5px;
   margin: 10px 20px;
   transition: .3s;
+  z-index: 9999;
 }
 
 .add-comment .add-button:hover {
@@ -17,19 +18,21 @@
 }
 
 .edit-comment .edit-field-bg {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
 }
 
 .edit-comment .edit-field {
-  position: absolute;
+  position: fixed;
   width: 60%;
   top: 20%;
   left: 20%;
+  z-index: 9999;
 }
 
 .edit-comment .edit-field .edit-field-head {

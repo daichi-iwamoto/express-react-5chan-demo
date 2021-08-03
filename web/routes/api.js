@@ -5,93 +5,58 @@ var express = require('express');
 var router = express.Router();
 const mysql = require('mysql');
 
-/*
+/** DB接続 */
 const connection = mysql.createConnection({
   host: 'mysql',
   database: env.MYSQL_DATABASE,
   user: env.MYSQL_USER,
   password: env.MYSQL_PASSWORD,
 });
-
 connection.connect((err) => {
   if (err) throw err;
   console.log('Connected!');
 });
-*/
 
-router.get('/thread', function (req, res, next) {
+/** スレタイ取得 */
+router.get('/thread', function (req, res) {
   connection.query('select name from ThreadList where id=1', (err, rows, fields) => {
     res.json(rows);
   });
 });
 
-
-router.get('/comments', function (req, res, next) {
-  connection.query('select * from CommentList where thread_id=1', (err, rows, fields) => {
+/** コメント一覧取得 */
+router.get('/comments', function (req, res) {
+  connection.query('select * from CommentList where thread_id=1 order by id', (err, rows, fields) => {
     res.json(rows);
   });
 });
 
-router.get('/thread-demo', function (req, res, next) {
-  res.json([
-    {
-      id: 1,
-      name: "test thread name"
-    }
-  ]);
-});
-
-
-router.get('/comments-demo', function (req, res, next) {
-  res.json([
-    {
-      id: 1,
-      thread_id: 1,
-      comment: "test comment 01",
-      post_date: '2021-08-01 00:00:01.000001',
-      edited: false
-    },
-    {
-      id: 2,
-      thread_id: 1,
-      comment: "test comment 02",
-      post_date: '2021-08-01 00:00:01.000001',
-      edited: false
-    },
-    {
-      id: 3,
-      thread_id: 1,
-      comment: "test comment 03",
-      post_date: '2021-08-01 00:00:01.000001',
-      edited: true
-    },
-    {
-      id: 4,
-      thread_id: 1,
-      comment: "日本語",
-      post_date: '2021-08-01 00:00:01.000001',
-      edited: true
-    },
-  ]);
-});
-
-router.get('/add-comments', function (req, res, next) {
-  const sql = "insert into CommentList (thread_id, comment, post_date, edited) values (1, 'にほんご', '2021-08-01 00:00:01.000001', false)"
-
-  connection.query(sql, (err, result, fields) => {
+/** コメント削除 */
+router.post('/delete-comment', function (req, res) {
+  res.setHeader('Content-Type', 'text/plain');
+  connection.query(`delete from CommentList where id=${req.body.id}`, (err, result, fields) => {
     if (err) throw err;
-    console.log(result);
+    res.json(result);
   });
 });
 
-router.get('/hello', function (req, res, next) {
-  res.json([{
-    id: 1,
-    username: "samsepi0l"
-  }, {
-    id: 2,
-    username: "masalib"
-  }]);
+/** コメント編集 */
+router.post('/edit-comment', function (req, res) {
+  res.setHeader('Content-Type', 'text/plain');
+  connection.query(`update CommentList set comment="${req.body.comment}", edited=true where id=${req.body.id}`, (err, result, fields) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+/** コメント追加 */
+router.post('/add-comment', function (req, res) {
+  console.log(req.body.post_comment);
+  console.log(req.body.post_date);
+  connection.query(`insert into CommentList (thread_id, comment, post_date, edited) values (1, "${req.body.post_comment}", "${req.body.post_date}", false)`, (err, result, fields) => {
+    if (err) throw err;
+    res.json(result);
+  });
 });
 
 module.exports = router;

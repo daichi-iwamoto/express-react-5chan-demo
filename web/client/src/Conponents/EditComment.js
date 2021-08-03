@@ -10,7 +10,25 @@ const EditComment = (props) => {
 
   // 投稿
   const postComment = () => {
-    console.log(editComment);
+    const method = "POST";
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+    const body = JSON.stringify({id: props.editCommentId, comment: editComment});
+
+    fetch('/api/edit-comment', {method, headers, body})
+    .then(res => res.json())
+    .then(
+      (result) => {
+        console.log(result);
+        props.changeRefresh();
+        props.changeEditCommentFlag();
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   if (props.editCommentId != null && props.editCommentComment != null) {

@@ -4,7 +4,25 @@ import '../Style/DeleteComment.css';
 const DeleteComment = (props) => {
   // コメント削除
   const delComment = () => {
-    console.log(props.delCommentId)
+    const method = "POST";
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+    const body = JSON.stringify({id: props.delCommentId});
+
+    fetch('/api/delete-comment', {method, headers, body})
+    .then(res => res.json())
+    .then(
+      (result) => {
+        console.log(result);
+        props.changeRefresh();
+        props.changeDeleteCommentFlag();
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddComment = () => {
+const AddComment = (props) => {
   const [addFlag, setAddFlag] = useState(false);
   const [comment, setComment] = useState('');
 
@@ -16,7 +16,28 @@ const AddComment = () => {
 
   // 投稿
   const postComment = () => {
-    console.log(comment);
+    const date = new Date();
+    const now_date = `${date.getFullYear()}-${("00" + (date.getMonth() + 1)).slice(-2)}-${("00" + date.getDate()).slice(-2)} ${("00" + date.getHours()).slice(-2)}:${("00" + date.getMinutes()).slice(-2)}:${date.getSeconds()}.${date.getMilliseconds()}`;
+
+    const method = "POST";
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+    const body = JSON.stringify({post_comment: comment, post_date: now_date});
+
+    fetch('/api/add-comment', {method, headers, body})
+    .then(res => res.json())
+    .then(
+      (result) => {
+        console.log(result);
+        props.changeRefresh();
+        setFieldFlag();
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   if (!addFlag) {

@@ -6,6 +6,8 @@ import EditComment from './EditComment';
 import DeleteComment from './DeleteComment';
 
 function Thread() {
+  const [refresh, setRefresh] = useState(true);                                     // fetchリロード
+
   const [getTitleError, setGetTitleError] = useState(null);                      // title取得時エラー
   const [isTitleLoaded, setIsTitleLoaded] = useState(false);                     // title取得ローディング
   const [title, setTitle] = useState(null);                                      // titleデータ
@@ -25,7 +27,7 @@ function Thread() {
    * データ取得
    */
   useEffect(() => {
-    fetch("/api/thread-demo")
+    fetch("/api/thread")
     .then(res => res.json())
     .then(
       (result) => {
@@ -38,7 +40,7 @@ function Thread() {
       }
     )
 
-    fetch("/api/comments-demo")
+    fetch("/api/comments")
       .then(res => res.json())
       .then(
         (result) => {
@@ -50,7 +52,12 @@ function Thread() {
           setGetCommentsError(error);
         }
       )
-  }, [])
+  }, [refresh])
+
+  /** fetchデータリフレッシュ */
+  const changeRefresh = () => {
+    setRefresh(!refresh)
+  }
 
   /**
    * コメント編集
@@ -125,7 +132,7 @@ function Thread() {
                 <p className="date">{comment.post_date}</p>
                 <button className="edit" onClick={() => editComment(comment.id, comment.comment , () => console.log('success!'))}>編集</button>
                 <button className="del" onClick={() => delComment(comment.id)}>削除</button>
-                {comment.edited && <p className="edited">&#x270d;</p>}
+                {comment.edited == true && <p className="edited">&#x270d;</p>}
               </div>
               <div className="contents">
                 {comment.comment}
@@ -144,9 +151,9 @@ function Thread() {
     <section id="thread">
       {getTitle()}
       {getComments()}
-      {editCommentFlag && <EditComment editCommentId={editCommentId} editCommentComment={editCommentComment} changeEditCommentFlag={changeEditCommentFlag} />}
-      {delCommentFlag && <DeleteComment delCommentId={delCommentId} changeDeleteCommentFlag={changeDeleteCommentFlag}  />}
-      <AddComment />
+      {editCommentFlag && <EditComment editCommentId={editCommentId} editCommentComment={editCommentComment} changeEditCommentFlag={changeEditCommentFlag} changeRefresh={changeRefresh} />}
+      {delCommentFlag && <DeleteComment delCommentId={delCommentId} changeDeleteCommentFlag={changeDeleteCommentFlag} changeRefresh={changeRefresh} />}
+      <AddComment changeRefresh={changeRefresh} />
     </section>
   );
 }
