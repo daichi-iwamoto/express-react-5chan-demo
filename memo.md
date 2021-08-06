@@ -85,7 +85,7 @@ docker-compose exec mysql mysql -uroot -p
 ## 参考記事
 
 Express × MySQL環境構築：https://note.com/kawa1228/n/nb18e19fbf4cc  
-DB接続：https://zenn.dev/ryota_koba04/scraps/1556360172954c
-Express API作成：https://qiita.com/tamura_CD/items/e3abdab9b8c5aa35fa6b
+DB接続：https://zenn.dev/ryota_koba04/scraps/1556360172954c  
+Express API作成：https://qiita.com/tamura_CD/items/e3abdab9b8c5aa35fa6b  
 React × Express連携：https://masalib.hatenablog.com/entry/2018/04/30/021913  
 React fetch リロード：https://let.blog.jp/article/24205840
