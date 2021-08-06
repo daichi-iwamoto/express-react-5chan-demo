@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 const EditComment = (props) => {
   const [editComment, setEditComment] = useState(props.editCommentComment);
 
-  // コメント内容セット
+  /** コメント内容セット */
   const changeComment = (e) => {
     setEditComment(() => e.target.value)
   }
 
-  // 投稿
+  /** 編集内容投稿処理 */
   const postComment = () => {
     const method = "POST";
     const headers = {
@@ -31,6 +31,7 @@ const EditComment = (props) => {
     )
   }
 
+  /** EditComment return */
   if (props.editCommentId != null && props.editCommentComment != null) {
     return (
       <div>

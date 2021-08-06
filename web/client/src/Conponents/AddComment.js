@@ -4,17 +4,17 @@ const AddComment = (props) => {
   const [addFlag, setAddFlag] = useState(false);
   const [comment, setComment] = useState('');
 
-  // ポップアップ表示切替
+  /** ポップアップ表示切替 */
   const setFieldFlag = () => {
     setAddFlag(!addFlag);
   }
 
-  // コメントセット
+  /** 編集コメントのセット */
   const changeComment = (e) => {
     setComment(() => e.target.value)
   }
 
-  // 投稿
+  /** 投稿処理 */
   const postComment = () => {
     const date = new Date();
     const now_date = `${date.getFullYear()}-${("00" + (date.getMonth() + 1)).slice(-2)}-${("00" + date.getDate()).slice(-2)} ${("00" + date.getHours()).slice(-2)}:${("00" + date.getMinutes()).slice(-2)}:${date.getSeconds()}.${date.getMilliseconds()}`;
@@ -40,6 +40,7 @@ const AddComment = (props) => {
     )
   }
 
+  /** AddComment return */
   if (!addFlag) {
     return (
       <div className="add-comment">

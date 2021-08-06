@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../Style/DeleteComment.css';
 
 const DeleteComment = (props) => {
-  // コメント削除
+  /** コメント削除処理 */
   const delComment = () => {
     const method = "POST";
     const headers = {
@@ -25,6 +25,7 @@ const DeleteComment = (props) => {
     )
   }
 
+  /** DeleteComment return */
   return (
     <div className="delete-comment">
       <div className="delete-field-bg" onClick={props.changeDeleteCommentFlag}></div>
