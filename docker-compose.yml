@@ -9,7 +9,7 @@ services:
    ports:
      - '3306:3306'
    volumes:
-     - ./mysql/conf:/etc/mysql/conf.d/:ro
+     - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
      - mysqldata:/var/lib/mysql
    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
    networks:
@@ -26,7 +26,7 @@ services:
    volumes:
      - ./web:/app
    working_dir: /app
-    command: npm run dev
+   command: npm run dev
    networks:
      - default
    depends_on:
